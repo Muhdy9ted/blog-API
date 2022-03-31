@@ -59,7 +59,7 @@ app.use((error, req, res, next) => { //universal error handler triggered by next
 })
 
 mongoose.connect(MONGODB_URI).then(result => {
-    const server = app.listen(3002);
+    const server = app.listen(process.env.PORT || 3002);
     
     const io = require('./socket').init(server);
     io.on('connection', socket => {
